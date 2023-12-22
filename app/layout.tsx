@@ -1,20 +1,10 @@
-import type { Metadata } from 'next'
+'use client';
 import { Inter } from 'next/font/google'
-import './ui/globals.css'
+import './globals.css'
+import { ThemeProvider } from 'next-themes'
+import { Header } from '@/components/ui/header';
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  metadataBase: new URL('https://soloinvoice.com'),
-  title: 'Solo Invoice',
-  description: 'Free invoice generator for freelancers',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://solo-invoice.vercel.app/',
-    siteName: 'Solo Invoice',
-  },
-}
 
 export default function RootLayout({
   children,
@@ -24,7 +14,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <Header />
+          <main className="pt-16">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )

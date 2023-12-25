@@ -1,3 +1,4 @@
+'use client';
 import { Invoice } from '@prisma/client';
 import React, { useRef, useState } from 'react';
 import { Label } from '@/components/ui/label';

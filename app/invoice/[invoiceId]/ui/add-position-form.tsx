@@ -38,11 +38,11 @@ const initialState: Position = {
 };
 
 type Props = {
-    invoiceId: number;
     onCreated?: (position: Position) => void;
+    invoiceId: string;
 };
 
-export default function AddPositionForm({ invoiceId, onCreated }: Props) {
+export default function AddPositionForm({ onCreated, invoiceId }: Props) {
     const [error, setError] = useState<string>('');
     const formRef = useRef<HTMLFormElement>(null);
 
@@ -57,7 +57,7 @@ export default function AddPositionForm({ invoiceId, onCreated }: Props) {
             quantity,
             price,
             tax,
-            invoiceId,
+            invoiceId: Number(invoiceId),
         };
 
         try {
@@ -77,14 +77,14 @@ export default function AddPositionForm({ invoiceId, onCreated }: Props) {
 
 
     return (
-        <Card>
+        <Card className='w-full'>
             <CardHeader>
-                <CardTitle>Create Position</CardTitle>
+                <CardTitle>Add Position</CardTitle>
                 <CardDescription>Create a new position to your invoice.</CardDescription>
             </CardHeader>
             <form action={onSubmit} ref={formRef}>
                 <CardContent>
-                    <div className='grid w-full items-center gap-4'>
+                    <div className='grid w-full items-center gap-4 md:grid-cols-2 lg:grid-cols-4'>
                         <div className="flex flex-col space-y-1.5">
                             <Label htmlFor="description">Description</Label>
                             <Input type="text" id="description" name='description' placeholder="Presentation" />

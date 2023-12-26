@@ -1,8 +1,8 @@
 'use client';
 import { TrashIcon } from '@radix-ui/react-icons'
-import React from 'react'
-import { deleteInvoice } from '../../../lib/actions'
-import { useRouter } from 'next/navigation'
+import React from 'react';
+import { deleteInvoice } from '@/app/lib/actions/invoice';
+import { useRouter } from 'next/navigation';
 
 type Props = {
     invoiceId: string

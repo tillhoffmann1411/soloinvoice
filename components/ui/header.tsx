@@ -11,8 +11,8 @@ export function Header() {
                 <p className="text-2xl font-bold">Invoice App</p>
             </Link>
             <div className="flex items-center space-x-4">
-                <Link href="/login">Login</Link>
-                <Link href="/register">Register</Link>
+                <Link href="/contact">Contacts</Link>
+                <Link href="/invoice">Invoices</Link>
                 <ModeToggle />
             </div>
         </header>

@@ -1,5 +1,5 @@
 import { Position } from '@prisma/client';
-import { deletePosition } from '../../../lib/actions';
+import { deletePosition } from '@/app/lib/actions/position';
 import { TrashIcon } from '@radix-ui/react-icons';
 import PositionTableSkeleton from './position-table-skeleton';
 import { Skeleton } from '../../../../components/ui/skeleton';

@@ -1,7 +1,7 @@
 'use client'
 import { useFormStatus } from 'react-dom';
-import { addPosition } from '../../../lib/actions';
 import { useRef, useState } from 'react';
+import { addPosition } from '@/app/lib/actions/position';
 import { Position } from '@prisma/client';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';

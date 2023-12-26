@@ -1,19 +1,18 @@
 'use server';
 import { Suspense } from 'react';
-import { getInvoices } from '@/app/lib/actions/invoice';
-import InvoiceListItem from './invoice-list-item';
-import InvoiceSkeleton from './invoice-skeleton';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { PlusCircledIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
+import ContactListItem from './contact-list-item';
+import { getContacts } from '@/app/lib/actions/contact';
 
-export default async function InvoiceSelector() {
-    const invoices = await getInvoices();
+export default async function ContactSelector() {
+    const contacts = await getContacts();
 
     return (
         <ul>
-            <Link href={`/invoice/`}>
+            <Link href={`/contact/`}>
                 <li
                     className="flex justify-between gap-x-6 rounded-lg p-2 cursor-pointer border border-transparent hover:border-inherit hover:shadow-sm"
                 >
@@ -32,9 +31,9 @@ export default async function InvoiceSelector() {
                 </li >
             </Link>
             <Separator className='my-2' />
-            <Suspense fallback={<InvoiceSkeleton />}>
-                {invoices.map((invoice) => (
-                    <InvoiceListItem key={invoice.id} invoice={invoice} />
+            <Suspense fallback={<div>Loading... </div>}>
+                {contacts.map((contact) => (
+                    <ContactListItem key={contact.id} contact={contact} />
                 ))}
             </Suspense>
         </ul>

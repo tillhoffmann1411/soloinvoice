@@ -2,7 +2,7 @@
 import GeneratePdf from './ui/generate-pdf';
 import Table from './ui/table';
 import { Position } from '@prisma/client';
-import { getInvoice, getPositions } from '../../lib/actions';
+import { getPositions } from '@/app/lib/actions/position';
 import { useEffect, useState } from 'react';
 
 

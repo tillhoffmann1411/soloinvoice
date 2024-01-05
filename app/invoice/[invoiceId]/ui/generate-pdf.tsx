@@ -4,6 +4,7 @@ export default function GeneratePdf() {
     return (
         <div>
             <Button
+                variant="outline"
                 type="submit"
             >
                 Generate PDF

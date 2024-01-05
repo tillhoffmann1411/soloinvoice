@@ -95,7 +95,7 @@ export default function AddInvoice({ onCreate }: Props) {
                     {error && <p className="text-red-500">{error}</p>}
                 </CardContent>
                 <CardFooter className="flex justify-end">
-                    <Button type="submit">Add Invoice</Button>
+                    <Button variant="outline" type="submit">Add Invoice</Button>
                 </CardFooter>
             </form>
         </Card>

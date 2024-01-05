@@ -34,20 +34,20 @@ export default function AddContact({ onCreate }: Props) {
     const onSubmit = async (formData: FormData) => {
         const name = formData.get('name')?.toString() || '';
         const email = formData.get('email')?.toString() || '';
-        const telephone = formData.get('telephone')?.toString() || '';
+        const phone = formData.get('phone')?.toString() || '';
         const street = formData.get('street')?.toString() || '';
         const city = formData.get('city')?.toString() || '';
-        const postCode = formData.get('postCode')?.toString() || '';
+        const zipcode = formData.get('zipcode')?.toString() || '';
         const country = formData.get('country')?.toString() || '';
         const userId = 1
         const data = {
             ...initialState,
             name,
             email,
-            telephone,
+            phone,
             street,
             city,
-            postCode,
+            zipcode,
             country,
             userId,
         };
@@ -60,7 +60,7 @@ export default function AddContact({ onCreate }: Props) {
             }
             formRef.current?.reset();
             onCreate && onCreate(res.contact);
-            router.push(`/contact/${res.contact.id}`);
+            router.push(`/contact`);
             setError('');
         } catch (error: any) {
             setError(error.message);

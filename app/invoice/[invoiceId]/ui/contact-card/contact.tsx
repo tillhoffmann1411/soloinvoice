@@ -1,17 +1,27 @@
-'use server';
-import React from 'react'
+'use client';
+import React, { useEffect, useState } from 'react'
 
 import { getContactForInvoice } from '@/app/lib/actions/contact'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { PersonIcon } from '@radix-ui/react-icons';
+import ChangeContact from './change-contact';
+import { Contact } from '@prisma/client';
 
 type Props = {
     invoiceId: string
 };
 
-export default async function Contact({ invoiceId }: Props) {
-    const contact = await getContactForInvoice(Number(invoiceId));
+export default function Contact({ invoiceId }: Props) {
+    const [contact, setContact] = useState<Contact | null>(null);
+
+    useEffect(() => {
+        const fetchContact = async () => {
+            const contact = await getContactForInvoice(Number(invoiceId));
+            setContact(contact);
+        };
+        fetchContact();
+    }, [setContact, invoiceId]);
 
     return (
         <Card className='w-full'>
@@ -32,9 +42,12 @@ export default async function Contact({ invoiceId }: Props) {
                                 <p className="mt-1 truncate text-sm leading-5 text-gray-500">{contact.zipcode + ' ' + contact.city}</p>
                             </div>
                         </div>
-                        <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                            <p className="text-sm leading-6 text-gray-900 dark:text-gray-100">{contact.email}</p>
-                            <p className="mt-1 truncate text-sm leading-5 text-gray-500">{contact.street}</p>
+                        <div className='flex items-center space-x-2'>
+                            <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                                <p className="text-sm leading-6 text-gray-900 dark:text-gray-100">{contact.email}</p>
+                                <p className="mt-1 truncate text-sm leading-5 text-gray-500">{contact.street}</p>
+                            </div>
+                            <ChangeContact />
                         </div>
                     </div>
                 )}

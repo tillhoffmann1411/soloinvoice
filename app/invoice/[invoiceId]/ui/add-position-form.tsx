@@ -105,7 +105,7 @@ export default function AddPositionForm({ onCreated, invoiceId }: Props) {
 
                 </CardContent>
                 <CardFooter className="flex justify-end">
-                    <Button type="submit">Add Position</Button>
+                    <Button variant="outline" type="submit">Add Position</Button>
                 </CardFooter>
             </form>
         </Card>

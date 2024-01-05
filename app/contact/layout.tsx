@@ -1,7 +1,4 @@
-'use server';
-import ContactSelector from './ui/invoice-selector'
-
-export default async function Layout({
+export default function Layout({
     children,
 }: {
     children: React.ReactNode

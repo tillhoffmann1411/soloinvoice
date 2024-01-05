@@ -1,17 +1,37 @@
-import React, { Suspense } from 'react'
-import { getInvoice } from '@/app/lib/actions/invoice';
-import { Skeleton } from '@/components/ui/skeleton';
-import OptionsButton from './positions/options-button';
+import React, { useEffect, useState } from 'react'
+import { TrashIcon } from '@radix-ui/react-icons';
+import { Invoice } from '@prisma/client';
+import { useRouter } from 'next/navigation';
 
-export default async function InvoiceTitle({ invoiceId }: { invoiceId: string }) {
-    const invoice = await getInvoice(Number(invoiceId))
+import { deleteInvoice, getInvoice } from '@/app/lib/actions/invoice';
+import { Button } from '@/components/ui/button';
+
+export default function InvoiceTitle({ invoiceId }: { invoiceId: string }) {
+    const [invoice, setInvoice] = useState<Invoice | null>(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchInvoice = async () => {
+            const invoice = await getInvoice(Number(invoiceId));
+            setInvoice(invoice);
+        };
+        fetchInvoice();
+    }, [setInvoice, invoiceId]);
+
+    const onDeleteInvoice = async () => {
+        await deleteInvoice(Number(invoiceId));
+        router.push('/invoice');
+    };
 
     return (
         <div className='inline-flex pb-2 items-center gap-x-2'>
-            <Suspense fallback={<Skeleton className="h-4 w-[250px] my-2" />}>
-                <h1 className="text-2xl font-bold">{invoice?.title}</h1>
-            </Suspense>
-            <OptionsButton invoiceId={invoiceId} />
+            <h1 className="text-2xl font-bold">{invoice && invoice.title}</h1>
+            <Button
+                variant="ghost"
+                onClick={onDeleteInvoice}
+            >
+                <TrashIcon className="text-red-600" />
+            </Button>
         </div>
     )
 }

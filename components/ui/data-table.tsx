@@ -27,6 +27,7 @@ import {
 import { Button } from '@/components/ui/button';
 
 import { useState } from 'react'
+import { ChevronDown } from 'lucide-react';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -56,7 +57,8 @@ export function DataTable<TData, TValue>({
             <div className="flex items-center py-4">
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="ml-auto">
+                        <Button variant="ghost" className="flex items-center ml-auto">
+                            <ChevronDown className="w-4 h-4" />
                             Columns
                         </Button>
                     </DropdownMenuTrigger>

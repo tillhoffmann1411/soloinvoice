@@ -13,7 +13,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { CopyIcon, EyeOpenIcon, OpenInNewWindowIcon, Pencil2Icon, TrashIcon } from '@radix-ui/react-icons';
+import { CopyIcon, OpenInNewWindowIcon, Pencil2Icon, TrashIcon } from '@radix-ui/react-icons';
 
 export const contactColumns: ColumnDef<Contact>[] = [
     {

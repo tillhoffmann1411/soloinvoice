@@ -80,7 +80,6 @@ export default function AddPositionForm({ onCreated, invoiceId }: Props) {
         <Card className='w-full'>
             <CardHeader>
                 <CardTitle>Add Position</CardTitle>
-                <CardDescription>Create a new position to your invoice.</CardDescription>
             </CardHeader>
             <form action={onSubmit} ref={formRef}>
                 <CardContent>

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { getInvoice } from '@/app/lib/actions/invoice';
 import { Skeleton } from '@/components/ui/skeleton';
-import OptionsButton from './options-button';
+import OptionsButton from './positions/options-button';
 
 export default async function InvoiceTitle({ invoiceId }: { invoiceId: string }) {
     const invoice = await getInvoice(Number(invoiceId))

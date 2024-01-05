@@ -10,7 +10,7 @@ const invoiceSchema = z.object({
 });
 
 export async function addInvoice(inInvoice: Invoice): Promise<{ status: string, message: string, invoice: Invoice }> {
-    const { title, userId } = inInvoice;
+    const { title, invoiceNo, date, dueDate, contactId, userId } = inInvoice;
     const result = invoiceSchema.safeParse({
         title,
         userId,
@@ -23,7 +23,11 @@ export async function addInvoice(inInvoice: Invoice): Promise<{ status: string, 
         const invoice = await prisma.invoice.create({
             data: {
                 user: { connect: { id: userId } },
+                contact: { connect: { id: contactId } },
                 title,
+                invoiceNo,
+                date,
+                dueDate,
             }
         });
         revalidatePath('/invoice');
@@ -36,7 +40,7 @@ export async function addInvoice(inInvoice: Invoice): Promise<{ status: string, 
 
 export async function getInvoices(): Promise<Invoice[]> {
     revalidatePath('/invoice');
-    return prisma.invoice.findMany();
+    return prisma.invoice.findMany({ where: { userId: 1 } });
 }
 
 export async function getInvoice(invoiceId: number): Promise<Invoice | null> {

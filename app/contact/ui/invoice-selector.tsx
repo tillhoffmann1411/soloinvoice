@@ -25,7 +25,7 @@ export default async function ContactSelector() {
                             </Avatar>
                         </div>
                         <div className="min-w-0 flex-auto self-center">
-                            <p className="text-sm font-semibold">+ New Invoice</p>
+                            <p className="text-sm font-semibold">+ New Contact</p>
                         </div>
                     </div>
                 </li >

@@ -1,6 +1,6 @@
 'use client';
 import { Contact } from '@prisma/client';
-import { FileIcon } from '@radix-ui/react-icons';
+import { PersonIcon } from '@radix-ui/react-icons';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import Link from 'next/link';
 
@@ -21,12 +21,13 @@ export default function ContactListItem({ contact, onDelete }: Props) {
                     <div className="flex-none p-2">
                         <Avatar>
                             <AvatarFallback>
-                                <FileIcon className="w-5 h-5 text-gray-500" />
+                                <PersonIcon className="w-5 h-5 text-gray-500" />
                             </AvatarFallback>
                         </Avatar>
                     </div>
                     <div className="min-w-0 flex-auto self-center">
                         <p className="text-sm font-semibold">{contact.name}</p>
+                        <p className="text-sm">{contact.email}</p>
                     </div>
                 </div>
             </li >

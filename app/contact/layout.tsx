@@ -1,3 +1,4 @@
+import ContactSelector from './ui/invoice-selector'
 
 export default function Layout({
     children,
@@ -10,6 +11,7 @@ export default function Layout({
                 <h1 className="text-2xl font-bold pb-2">
                     Contacts
                 </h1>
+                <ContactSelector />
             </div>
             <div className="w-full">
                 {children}

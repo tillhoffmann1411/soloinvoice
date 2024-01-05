@@ -2,12 +2,12 @@ import { Position } from '@prisma/client';
 import { deletePosition } from '@/app/lib/actions/position';
 import { TrashIcon } from '@radix-ui/react-icons';
 import PositionTableSkeleton from './position-table-skeleton';
-import { Skeleton } from '../../../../components/ui/skeleton';
+import { Skeleton } from '../../../../../components/ui/skeleton';
 
 type Props = {
     positions: Position[];
     onDelete?: (id: number) => void;
-    loading: boolean;
+    loading?: boolean;
 };
 
 export default function PositionTable({ positions, onDelete, loading }: Props) {
@@ -17,8 +17,8 @@ export default function PositionTable({ positions, onDelete, loading }: Props) {
     }
 
     return (
-        <div className="flex flex-col overflow-scroll">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="flex flex-col overflow-x-auto">
+            <div className="sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div className="overflow-hidden">
                         <table className="min-w-full text-left text-sm font-light">
@@ -53,7 +53,7 @@ export default function PositionTable({ positions, onDelete, loading }: Props) {
                                     <td className="whitespace-nowrap px-6 py-4"></td>
                                     <td className="whitespace-nowrap px-6 py-4"></td>
                                     <td className="whitespace-nowrap px-6 py-4"></td>
-                                    <td className="whitespace-nowrap px-6 py-4">{loading ? <Skeleton className="h-1 w-[25px]" /> : (positions.reduce((acc, curr) => acc + curr.total, 0).toFixed(2) + '€')}</td>
+                                    <td className="whitespace-nowrap px-6 py-4">{loading ? <Skeleton className="h-1 w-[25px]" /> : (positions.reduce((acc, curr) => acc + curr.total, 0).toFixed(2) + ' €')}</td>
                                     <td className="whitespace-nowrap px-6 py-4"></td>
                                 </tr>
                             </tbody>

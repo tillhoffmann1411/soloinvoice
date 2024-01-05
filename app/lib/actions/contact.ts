@@ -15,8 +15,17 @@ const contactSchema = z.object({
 });
 
 export async function getContacts(): Promise<Contact[]> {
-    const contacts = await prisma.contact.findMany();
+    const contacts = await prisma.contact.findMany({ where: { userId: 1 } });
     return contacts;
+}
+
+export async function getContact(contactId: number): Promise<Contact | null> {
+    return prisma.contact.findUnique({ where: { id: contactId } });
+};
+
+export async function getContactForInvoice(invoiceId: number): Promise<Contact | null> {
+    const invoice = await prisma.invoice.findUnique({ where: { id: invoiceId }, include: { contact: true } });
+    return invoice?.contact || null;
 }
 
 export async function addContact(inContact: Contact): Promise<{ status: string, message: string, contact: Contact }> {

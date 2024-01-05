@@ -1,13 +1,10 @@
+'use server';
 import React from 'react'
-import AddContact from './ui/add-contact'
-
-export default function Home() {
+import ContactTable from './ui/contact-table/contact-table';
+export default async function Home() {
     return (
         <div>
-            <h1 className="text-2xl font-bold pb-2">
-                Create new contact
-            </h1>
-            <AddContact />
+            <ContactTable />
         </div>
     )
 };

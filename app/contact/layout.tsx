@@ -1,21 +1,14 @@
+'use server';
 import ContactSelector from './ui/invoice-selector'
 
-export default function Layout({
+export default async function Layout({
     children,
 }: {
     children: React.ReactNode
 }) {
     return (
-        <main className="flex items-center flex-col gap-y-8 p-2 md:flex-row md:items-start md:gap-x-4">
-            <div className="w-full md:w-1/4 md:max-w-sm">
-                <h1 className="text-2xl font-bold pb-2">
-                    Contacts
-                </h1>
-                <ContactSelector />
-            </div>
-            <div className="w-full">
-                {children}
-            </div>
+        <main className='p-6'>
+            {children}
         </main>
     )
 }

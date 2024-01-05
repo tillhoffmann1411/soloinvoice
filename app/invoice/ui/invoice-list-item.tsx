@@ -1,6 +1,6 @@
 'use server';
 import { Invoice } from '@prisma/client';
-import { FileIcon } from '@radix-ui/react-icons';
+import { ExclamationTriangleIcon, FileIcon } from '@radix-ui/react-icons';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import Link from 'next/link';
 import { getContactForInvoice } from '../../lib/actions/contact';
@@ -28,7 +28,19 @@ export default async function InvoiceListItem({ invoice }: Props) {
                     </div>
                     <div className="min-w-0 flex-auto">
                         <p className="text-sm font-semibold leading-6">{`${invoice.title} (${invoice.date.toLocaleDateString()})`}</p>
-                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">{contact && contact.name}</p>
+                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                            {contact
+                                ? contact.name
+                                : (
+                                    <span className='flex space-x-1 items-center text-orange-300 dark:text-orange-700'>
+                                        <ExclamationTriangleIcon />
+                                        <p>
+                                            No contact selected
+                                        </p>
+                                    </span>
+                                )
+                            }
+                        </p>
                     </div>
                 </div>
             </li >

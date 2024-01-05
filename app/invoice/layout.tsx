@@ -13,7 +13,6 @@ export default function Layout({
     return (
         <ResizablePanelGroup
             direction="horizontal"
-            className=""
         >
             <ResizablePanel defaultSize={25}>
                 <div className="w-full pt-6 px-2">

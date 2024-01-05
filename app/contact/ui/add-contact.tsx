@@ -18,6 +18,8 @@ const initialState: Contact = {
     zipcode: '',
     country: '',
     userId: 0,
+    createdAt: new Date(),
+    updatedAt: new Date(),
 };
 
 type Props = {
